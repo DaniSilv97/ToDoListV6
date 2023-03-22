@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task List</title>
+    
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+    <!--  -->
+    <div class="wrapper">
+        <header>
+            <div class="header-div">
+                <h1>Task List!</h1>
+                <button class="button" id="tasks-menu-start"><a href="./index.html">Tasks</a></button>
+                <button class="button" id="color-menu-start"><a href="./colors.html">Colors</a></button>
+            </div>
+        </header>
+    </div>
+    <div id="page-one">
+        <div class="wrapper">
+            <div class="spacer">
+                <form id="new-task-form">
+                    <input 
+                        type="text"
+                        id="new-task-input"
+                        name="content"
+                        placeholder=" e.g. Create a new website."
+                        class="input-text"/>
+                    <input 
+                        type="submit"
+                        id="new-task-submit"
+                        value="Add Task"
+                        class="button"/>
+                </form>
+            </div>
+            <!--  -->
+
+            <form id="category-container" class="spacer">
+                <input type="text" id="category-task-input" placeholder="Task category here..." class="input-text"/>
+                <input type="date" id="date-task-input" class="input-text"/>
+            </form>
+
+            <!--  -->
+
+            <div id="sort-container" class="spacer button-container">
+                <button class="button" id="sort-done">Sort by completed</button>
+                <button class="button" id="sort-not-done">Sort by uncompleted</button>
+            </div>
+
+            <!--  -->
+
+            <form id="search-container" class="spacer">
+                <input 
+                        type="submit"
+                        id="search-task-submit"
+                        value="Search for task"
+                        class="button"/>
+                <input 
+                        type="text"
+                        id="search-task-input"
+                        placeholder=" e.g. Create a new website."
+                        class="input-text"/>
+            </form>
+
+            <!--  -->
+
+            <form id="category-search-container" class="spacer">
+                <input 
+                        type="submit"
+                        id="search-category-submit"
+                        value="Search for category"
+                        class="button"/>
+                <input 
+                        type="text"
+                        id="search-category-input"
+                        placeholder=" e.g. Programming"
+                        class="input-text"/>
+            </form>
+
+            <!--  -->
+
+            <div id="sort-date-container" class="spacer button-container">
+                <button class="button" id="sort-date">Sort by date</button>
+                <button class="button" id="sort-late">Sort only late</button>
+            </div>
+
+            <!--  -->
+        </div>
+        <!--  -->
+
+        <main >
+
+        </main>
+
+        <div id="background-fade-delete" class="background-fade">
+            <div id="delete-popup" class="popup-div">
+                <p>Are you sure you want to delete this task ?</p>
+                <div class="popup-container">
+                    <button id="delete-yes" class="delete-yes button">Yes</button>
+                    <button id="delete-no" class="delete-no button">No</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="background-fade-form" class="background-fade">
+            <div id="form-popup" class="popup-div">
+                <p>Please fill the text areas.</p>
+                <div class="popup-container">
+                    <button id="form-popup-ok" class="button">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="module" src="./javascript/app.js"></script>
+</html>

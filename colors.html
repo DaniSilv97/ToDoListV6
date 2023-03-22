@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task List</title>
+    
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+    <!--  -->
+    <div class="wrapper">
+        <header>
+            <div class="header-div">
+                <h1>Task List!</h1>
+                <button class="button" id="tasks-menu-start"><a href="./index.html">Tasks</a></button>
+                <button class="button" id="color-menu-start">Colors</button>
+            </div>
+        </header>
+    </div>
+    <div id="page-two">
+        <div id="color-popup" class="wrapper">
+            <h2>Please fill the text areas.</h2>
+            <div class="popup-container color-container">
+                <div class="color-input">
+                    <input type="color" id="enough-time" class="input-color"/>
+                    <input type="color" id="short-time" class="input-color"/>
+                    <input type="color" id="no-time" class="input-color"/>
+                </div>
+                <div class="color-text">
+                    <input type="text" id="enough-time-text" class="input-text" placeholder="Num of days left (10)" />
+                    <input type="text" id="short-time-text" class="input-text" placeholder="Num of days left (2)"/>
+                    <input type="text" id="no-time-text" class="input-text" placeholder="Overdue"readonly/>
+                </div>
+                <button id="color-popup-ok" class="button">Ok</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="module" src="./javascript/app.js"></script>
+</html>

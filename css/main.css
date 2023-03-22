@@ -1,0 +1,444 @@
+:root{
+    --darkestopacity: rgba(17, 24, 39, 0.8);
+    --darkest: #111827;
+    --darker: #1F2937;
+    --dark: #374151;
+    --gray:#6B7280;
+    --ligth: #EEE;
+    --highlight: #52a3da;
+    --betweenhilighs: #5873D1;
+    --highlighter: #612cc4;
+
+    --longTime: rgb(255, 255, 255);
+    --enoughTime: #ffff7d;
+    --shortTime: #ffbe32;
+    --noTime: #ff0000;
+
+}
+*{
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Fira sans', sans-serif;
+}
+
+@keyframes taskCreate {
+    0%{
+        opacity: 0;;
+    }
+
+    30%{
+        background-color: var(--highlight);
+        opacity: 0.5;;
+    }
+}
+
+@keyframes taskDelete {
+    70%{
+        background-color: red;
+        opacity: 0.5;;
+    }
+
+    100%{
+        opacity: 0;;
+    }
+}
+
+@keyframes taskSortIn {
+    0%, 5%{opacity: 0;}
+
+    50%{
+        opacity: 0.5;;
+    }
+    100%{
+        opacity: 1;
+    }
+    
+}
+@keyframes taskSortOut {
+    0%, 5%{opacity: 0;}
+    60%{
+        opacity: 0.5;;
+    }
+
+    100%{
+        opacity: 0;;
+    }
+}
+
+
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--dark);
+    color: var(--ligth);
+    z-index: 1;
+}
+
+header h1{
+    flex: 10 0 0;
+    padding-bottom: 1rem;
+}
+.header-div{
+    display: flex;
+    justify-content: space-between;
+}
+.header-div button{
+    margin-left: 10px;
+    height: 3.5rem;
+}
+.wrapper{
+    padding: 1rem 1rem;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: var(--darker);
+    box-shadow: 1rem 1rem 1rem var(--darkest);
+    margin-top: 2rem;
+}
+
+.spacer{
+    margin-bottom: 1rem;
+}
+
+h1{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--gray);
+    margin-bottom: 1rem;
+}
+
+input, button{
+    appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+.input-text{
+    flex: 1 1 0%;
+    background-color: var(--dark);
+    padding: 1rem;
+    border-radius: 1rem;
+    color: var(--ligth);
+    font-size: 1.25rem;
+    box-shadow: 2px 2px 6px var(--darkest);
+}
+
+.button{
+    font-size: 1.12rem;
+    font-weight: 700;
+    background-image: linear-gradient(to right, var(--highlight),var(--highlighter));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+    transition: 0.4s;
+    border-radius: 1rem;
+    padding: 1rem;
+    border: 2px solid var(--gray);
+    transition: 0.5s;
+    box-shadow: 2px 2px 6px var(--gray);
+}
+.button:hover{
+    opacity: 0.8;
+    border: 2px solid var(--highlight);
+    box-shadow: 2px 2px 4px var(--highlight);
+}
+.button:active{
+    opacity: 0.6;
+    border: 2px solid var(--ligth);
+    box-shadow: 2px 2px 2px var(--ligth);
+    transition: none;
+}
+
+#new-task-form{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+#new-task-form input.button{
+    margin-left: 0.5rem;
+}
+
+#category-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+#category-container input.button{
+    margin-right: 0.5rem;
+}
+
+input[type="date"]{
+    margin-left: 10px;
+    max-width: 23%;
+}
+
+.button-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.button-container button{
+    width: 48%;
+    min-width: 220px;
+}
+
+
+#search-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+#search-container input.button{
+    margin-right: 0.5rem;
+}
+
+#category-search-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+#category-search-container input.button{
+    margin-right: 0.5rem;
+}
+
+.tasks-container{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+h2{
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--gray);
+    margin-bottom: 1rem;
+}
+
+.tasks{
+    display:flex;
+    flex-direction: column;
+}
+.task{
+    display: flex;
+    flex-direction: row;
+    background-color: var(--darkest);
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    order: 0;  
+    transition: all 0.4s;
+    transition: display 1s;
+    cursor: move;
+}
+
+.task .checkbox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+    border: 2px solid var(--highlight);
+    box-shadow: 2px 2px 5px var(--highlight);
+    border-radius: 50%;
+    padding-right: 1rem;
+    margin-right: 0.5rem;
+    transition: 0.5s;
+}
+.task:hover{
+    background-color: var(--betweenhilighs);
+    opacity: 0.6;
+}
+.task .checkbox:hover{
+    background-color: var(--betweenhilighs);
+    opacity: 0.6;
+}
+.task .checkbox:active{
+    opacity: 1;
+    background-color: var(--betweenhilighs);
+}
+.task.done{
+    opacity: 0.6;
+    background-color: var(--dark);
+}
+.task.done:hover{
+    opacity: 0.8;
+    background-color: var(--gray)
+}
+.task.done .checkbox:hover{
+    opacity: 1.2;
+    background-color: var(--highlight);
+}
+.task.done .text{
+    text-decoration: line-through;
+}
+
+.task span{
+    padding-top: 4px;
+    min-width: 6.5rem;
+    margin-right: 5px;
+}
+
+
+.task .text{
+    color: var(--ligth);
+    font-size: 1.125rem;
+    width: 100%;
+    display: block;
+    transition: 0.4s;
+    padding-left: 0.5rem;
+}
+.task .text:not(:read-only){
+    color: var(--highlight);
+}
+.task button{
+    transition: 0.5s;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+.task .task-edit{
+    background-image: linear-gradient(to right, var(--highlight),var(--highlighter));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.task .task-delete{
+    color: crimson;
+}
+.task button:hover{
+    opacity: 0.8;
+}
+.task button:active{
+    opacity: 0.6;
+}
+.task .task-edit:hover{
+    background-image: linear-gradient(to right, var(--highlight),blue);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.task .task-edit:active{
+    transition: none;
+    background-image: linear-gradient(to right, var(--ligth),var(--highlight));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.task .task-delete:hover{
+    color: red;
+}
+.task .task-delete:active{
+    transition: none;
+    color: rgb(255, 72, 0);
+}
+
+
+.background-fade{
+    opacity: 0;
+    position: fixed;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--darkestopacity);
+    pointer-events: none;
+}
+.background-fade.active{
+    opacity: 1;
+    pointer-events: all;
+}
+
+.popup-div{
+    position: fixed;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 2rem;
+    height: 10rem;
+    width: 34rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background-color: var(--dark);
+    box-shadow: 10px 10px 10px var(--darkest);
+    border: 2px solid var(--gray);
+    border-radius: 2rem;
+}
+.popup-div.active{
+    transform: translate(-50%, -50%) scale(1);
+}
+.popup-div p{
+    margin: 0 auto;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+.popup-container{
+    display: flex;
+    justify-content: space-around;
+}
+.popup-container .button{
+    width: 10rem;
+    background-color: var(--darker);
+}
+
+#color-popup{
+    display: flex;
+    flex-direction: column;
+    height: 20rem;
+    width: 50rem;
+}
+
+#color-popup h2{
+    margin: 0 auto;
+    margin-bottom: 1rem;
+}
+.color-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: space-around;
+}
+.color-container div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: space-around;
+    padding: 1rem;
+}
+.color-container button{
+    margin:0 auto
+}
+.input-color{
+    border-radius: 10px;
+    height: 2rem;
+    width: 4rem;
+}
+#enough-time{
+    background-color: var(--enoughTime);
+}
+#short-time{
+    background-color: var(--shortTime);
+}
+#no-time{
+    background-color: var(--noTime);
+}
+
+.color-container input{
+    padding: 1rem;
+    margin: 0.25rem;
+}
+.color-text input{
+    width: 1rem;
+}
+
+@media (max-width:470px){
+    .button-container button{
+        width: 100%;
+    }
+}
